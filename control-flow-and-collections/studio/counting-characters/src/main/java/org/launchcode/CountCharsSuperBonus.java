@@ -1,19 +1,29 @@
 package org.launchcode;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class CountCharsBonus {
+public class CountCharsSuperBonus {
 
     public static void main(String[] args) {
 
-        Scanner input = new Scanner(System.in);
+        String quoteFromFile = "";
 
-        System.out.println("Please enter a string to count its characters: ");
-        String userString = input.nextLine();
+        try {
+            File textFromFile = new File("src/main/java/org/launchcode/quote.txt");
+            Scanner myReader = new Scanner(textFromFile);
+            while (myReader.hasNextLine()) {
+                quoteFromFile = myReader.nextLine();
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred when trying to read quote from file.");
+        }
 
-        char[] charArray = userString.toUpperCase().toCharArray();
+        char[] charArray = quoteFromFile.toUpperCase().toCharArray();
 
         String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -33,12 +43,8 @@ public class CountCharsBonus {
             System.out.println(count.getKey() + ": " + count.getValue());
         }
 
-        input.close();
-
     }
-
 }
 
-// TEST INPUT - quote from Mary Anne Radmacher
-// Courage doesn't always roar. Sometimes courage is the quiet voice at the end of the day saying 'I will try again tomorrow'.
+
 
