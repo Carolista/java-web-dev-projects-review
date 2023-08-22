@@ -13,9 +13,9 @@ public class CountCharsSuperBonus {
         String quoteFromFile = "";
 
         try {
-            File textFromFile = new File("src/main/java/org/launchcode/quote.txt");
+            File textFromFile = new File("src/main/java/org/launchcode/quote.txt"); // Jonathan Mills
             Scanner myReader = new Scanner(textFromFile);
-            while (myReader.hasNextLine()) {
+            if (myReader.hasNextLine()) {
                 quoteFromFile = myReader.nextLine();
             }
             myReader.close();
