@@ -4,11 +4,16 @@ import java.time.LocalDate;
 
 public class MenuItem {
 
+    // FIELDS
+
     private String name;
     private String description;
     private double price;
     private String category;
     private final LocalDate dateAdded;
+
+
+    // CONSTRUCTORS
 
     public MenuItem(String name, String description, double price, String category) {
         this.name = name;
@@ -17,6 +22,9 @@ public class MenuItem {
         this.category = category;
         this.dateAdded = LocalDate.now();
     }
+
+
+    // GETTERS & SETTERS
 
     public String getName() {
         return name;
