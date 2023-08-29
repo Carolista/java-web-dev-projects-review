@@ -22,6 +22,8 @@ public class MenuItem {
         this.price = price;
         this.category = category;
         this.dateAdded = LocalDate.now();
+        // Use line below instead of line above to test isNew() returning false
+        // this.dateAdded = LocalDate.parse("2022-06-12");
     }
 
 
