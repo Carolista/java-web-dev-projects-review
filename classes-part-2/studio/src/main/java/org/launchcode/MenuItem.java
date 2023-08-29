@@ -1,14 +1,20 @@
 package org.launchcode;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 public class MenuItem {
+
+    // FIELDS
 
     private String name;
     private String description;
     private double price;
     private String category;
     private final LocalDate dateAdded;
+
+
+    // CONSTRUCTORS
 
     public MenuItem(String name, String description, double price, String category) {
         this.name = name;
@@ -17,6 +23,9 @@ public class MenuItem {
         this.category = category;
         this.dateAdded = LocalDate.now();
     }
+
+
+    // GETTERS & SETTERS
 
     public String getName() {
         return name;
@@ -53,4 +62,20 @@ public class MenuItem {
     public LocalDate getDateAdded() {
         return dateAdded;
     }
+
+
+    // SPECIAL METHODS
+
+    // TODO: Define custom toString() method
+    // Format name, description, price and conditional "NEW!"
+
+    // TODO: Define custom equals() method
+
+
+
+    // INSTANCE METHODS
+
+    // TODO: Define instance method isNew()
+    // return true if item added within last 90 days
+
 }
