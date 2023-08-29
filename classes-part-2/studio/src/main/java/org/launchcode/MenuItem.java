@@ -92,8 +92,10 @@ public class MenuItem {
             return false;
         }
 
+        // Cast to class
         MenuItem otherItem = (MenuItem) toBeCompared;
 
+        // Compare
         return this.name.equals(otherItem.getName());
     }
 
