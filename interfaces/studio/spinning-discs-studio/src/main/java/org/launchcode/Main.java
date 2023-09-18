@@ -3,9 +3,11 @@ package org.launchcode;
 public class Main {
     public static void main(String[] args) {
 
+        /* TEST CD AND DVD CLASSES */
+
         // Create objects of the CD and DVD classes
         CD theNorthBorders = new CD("The North Borders", true);
-        CD philosophyPapers = new CD("Philosophy Papers");
+        CD graphicDesignProjects = new CD("Graphic Design Projects");
         DVD friendsSeason3 = new DVD("Friends: Season 3");
 
 
@@ -17,10 +19,10 @@ public class Main {
         theNorthBorders.writeFile(cirrus);
         theNorthBorders.writeFile(transit);
 
-        File historyOfPhilosophy = new File("history-of-philosophy.doc", 0.8);
-        File absoluteTruths = new File("absolute-truths.doc", 1.2);
-        philosophyPapers.writeFile(historyOfPhilosophy);
-        philosophyPapers.writeFile(absoluteTruths);
+        File festivalPoster = new File("festival-poster.psd", 240);
+        File companyLogo = new File("company-logo.ai", 52);
+        graphicDesignProjects.writeFile(festivalPoster);
+        graphicDesignProjects.writeFile(companyLogo);
 
         File s3e1 = new File("S3:E1 - The One with the Princess Leia Fantasy", 420);
         File s3e2 = new File("S3:E1 - The One Where No One's Ready", 420);
@@ -34,13 +36,13 @@ public class Main {
 
         // Print each CD and DVD object
         System.out.println(theNorthBorders);
-        System.out.println(philosophyPapers);
+        System.out.println(graphicDesignProjects);
         System.out.println(friendsSeason3);
 
 
         // Use runFile() on both CD files
         theNorthBorders.runFile(cirrus);
-        philosophyPapers.runFile(absoluteTruths);
+        graphicDesignProjects.runFile(companyLogo);
 
 
         // Try to write a file to the DVD that has already been written
@@ -48,18 +50,42 @@ public class Main {
 
 
         // Use eraseData() to remove one file from the CD-ROM object, and then try to run that file
-        philosophyPapers.removeFile(historyOfPhilosophy);
-        theNorthBorders.runFile(historyOfPhilosophy);
+        graphicDesignProjects.removeFile(festivalPoster);
+        theNorthBorders.runFile(festivalPoster);
 
 
-        // Use reformatDisc() to wipe all files from the music CD object, and then try to run a file from it
+        // Use reformatDisc() to wipe all files from the music CD, and then try to run a file from it
         theNorthBorders.reformatDisc();
         theNorthBorders.runFile(transit);
 
+        // Create a 720 MB MP4 file and try to write it to the CD that is no longer a music CD
+        File tooBigFile = new File("too-big-file.mp4", 720);
+        theNorthBorders.writeFile(tooBigFile);
 
 
+        /* TEST FLOPPYDISK AND VINYLRECORD CLASSES*/
 
+        // Create objects of the FloppyDisk and VinylRecord classes
+        FloppyDisk philosophyPapers = new FloppyDisk("Philosophy Papers", 3.5);
+        VinylRecord magCityInstr = new VinylRecord("Magnificent City Instrumentals", 12, "RJD2");
 
+        // Create File objects and add them to the FloppyDisk object using writeData()
+        File historyOfPhilosophy = new File("history-of-philosophy.doc", 0.4);
+        File absoluteTruths = new File("absolute-truths.doc", 0.63);
+        philosophyPapers.writeFile(historyOfPhilosophy);
+        philosophyPapers.writeFile(absoluteTruths);
 
+        // Create File objects and add them (as an array) to the VinylRecord object using pressVinyl()
+        File aBeautifulMine = new File("A Beautiful Mine", 53);
+        File fire = new File("Fire", 41);
+        File aSundayMystery = new File("A Sunday Mystery", 13);
+        File[] files = new File[] { aBeautifulMine, fire, aSundayMystery };
+        magCityInstr.pressVinyl(files);
+
+        // Run a file from the FloppyDisk object
+        philosophyPapers.runFile(absoluteTruths);
+
+        // Play a track from the VinylRecord object
+        magCityInstr.playTrack(aBeautifulMine);
     }
 }
