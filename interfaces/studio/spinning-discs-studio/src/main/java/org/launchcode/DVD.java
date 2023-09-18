@@ -20,7 +20,7 @@ public class DVD extends Media implements Rewritable {
         if (getFiles().contains(file)) {
             System.out.println("The video " + file.getName() + " has already been added.");
         } else if (getSpaceUsed() + file.getSize() > getCapacity()) {
-            System.out.println("There is not enough space on the " +
+            System.out.println("WARNING: There is not enough space on the " +
                     getDiscType() + " for " + file.getName());
         } else {
             getFiles().add(file);
@@ -44,6 +44,7 @@ public class DVD extends Media implements Rewritable {
 
     public void runFile(File file){
         if (fileIsPresent(file)) {
+            spinDisc();
             System.out.println("Watching " + file.getName() + "...");
         }
     }

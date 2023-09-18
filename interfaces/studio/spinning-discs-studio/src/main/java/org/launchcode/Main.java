@@ -3,7 +3,7 @@ package org.launchcode;
 public class Main {
     public static void main(String[] args) {
 
-        /* TEST CD AND DVD CLASSES */
+        /* CD AND DVD CLASSES */
 
         // Create objects of the CD and DVD classes
         CD theNorthBorders = new CD("The North Borders", true);
@@ -58,12 +58,13 @@ public class Main {
         theNorthBorders.reformatDisc();
         theNorthBorders.runFile(transit);
 
+
         // Create a 720 MB MP4 file and try to write it to the CD that is no longer a music CD
         File tooBigFile = new File("too-big-file.mp4", 720);
         theNorthBorders.writeFile(tooBigFile);
 
 
-        /* TEST FLOPPYDISK AND VINYLRECORD CLASSES*/
+        /* BONUS MISSION 1: FLOPPYDISK AND VINYLRECORD CLASSES*/
 
         // Create objects of the FloppyDisk and VinylRecord classes
         FloppyDisk philosophyPapers = new FloppyDisk("Philosophy Papers", 3.5);
@@ -82,10 +83,42 @@ public class Main {
         File[] files = new File[] { aBeautifulMine, fire, aSundayMystery };
         magCityInstr.pressVinyl(files);
 
+        // Print each object
+        System.out.println(philosophyPapers);
+        System.out.println(magCityInstr);
+
         // Run a file from the FloppyDisk object
         philosophyPapers.runFile(absoluteTruths);
 
         // Play a track from the VinylRecord object
         magCityInstr.playTrack(aBeautifulMine);
+
+
+        /* BONUS MISSION 2: WHEEL & FRISBEE CLASSES */
+
+        // Create multiple objects of the Wheel and Frisbee classes
+        Wheel michelin = new Wheel("Michelin Defender 2 235/60 R18 106H", 18);
+        Wheel goodyear = new Wheel("Goodyear Edge A/T 225/75 R15", 15);
+        Frisbee ultimateDisc = new Frisbee("Innova Pulsar", "Ultimate disc");
+        Frisbee freestyleDisc = new Frisbee("Discraft Sky Styler", "Freestyle disc");
+
+        // Print each object
+        System.out.println(michelin);
+        System.out.println(goodyear);
+        System.out.println(ultimateDisc);
+        System.out.println(freestyleDisc);
+
+        // Drive a car for one Wheel object
+        michelin.driveCar();
+
+        // Change the MPH of both wheels and drive cars
+        michelin.setMilesPerHour(45);
+        goodyear.setMilesPerHour(70);
+        michelin.driveCar();
+        goodyear.driveCar();
+
+        // Throw a disc for each Frisbee object
+        ultimateDisc.throwFrisbee();
+        freestyleDisc.throwFrisbee();
     }
 }

@@ -52,7 +52,7 @@ public abstract class BaseDisc {
     public String toString() {
         String newline = System.lineSeparator();
         String asterisks = "*****";
-        return newline + asterisks + name + asterisks + newline +
+        return newline + asterisks + " " + name + " " + asterisks + newline +
                 "ID: " + id + newline +
                 "Disc Type: " + discType + newline +
                 "Spin Rate: " + spinRate + " RPM" + newline;
