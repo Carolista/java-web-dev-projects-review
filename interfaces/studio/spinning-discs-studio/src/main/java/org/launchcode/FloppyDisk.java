@@ -12,7 +12,7 @@ public class FloppyDisk extends Media implements Rewritable, VariableRPM {
 
     private static final Map<Double, Double> CAPACITIES = new HashMap<>() {{
         put(3.5, 1.44);
-        put(5.25, 0.360);
+        put(5.25, 0.36);
     }};
 
     private double width;
@@ -34,7 +34,7 @@ public class FloppyDisk extends Media implements Rewritable, VariableRPM {
             setCapacity(CAPACITIES.get(width));
             System.out.println(newline + "Spin rate and capacity updated for " + getName() + ".");
         } else {
-            System.out.println(newline + "WARNING: Spin rate and capacity not set." + newline +
+            System.out.println(newline + "WARNING: Spin rate and capacity not set. + newline +" +
                     "Please set a valid width (3.5 or 5.25).");
         }
     }
@@ -53,8 +53,7 @@ public class FloppyDisk extends Media implements Rewritable, VariableRPM {
         if (getFiles().contains(file)) {
             System.out.println("The file " + file.getName() + " has already been added.");
         } else if (getSpaceUsed() + file.getSize() > getCapacity()) {
-            System.out.println("WARNING: There is not enough space on the " +
-                    getDiscType() + " for " + file.getName());
+            System.out.println("WARNING: There is not enough space on the " + getDiscType() + " for " + file.getName() + ".");
         } else {
             getFiles().add(file);
             System.out.println("The file " + file.getName() + " has been added to " + getName() + ".");
@@ -66,6 +65,7 @@ public class FloppyDisk extends Media implements Rewritable, VariableRPM {
         spinDisc();
         if (fileIsPresent(file)) {
             getFiles().remove(file);
+            System.out.println("The file " + file.getName() + " has been removed from the " + getDiscType());
         }
     }
 
@@ -75,7 +75,8 @@ public class FloppyDisk extends Media implements Rewritable, VariableRPM {
         getFiles().clear();
     }
 
-    public void runFile(File file){
+    @Override
+    public void runFile(File file) {
         if (fileIsPresent(file)) {
             spinDisc();
             System.out.println("Opening " + file.getName() + "...");
@@ -94,5 +95,4 @@ public class FloppyDisk extends Media implements Rewritable, VariableRPM {
     public int calculateSpinRate() {
         return SPEEDS.get(width);
     }
-
 }

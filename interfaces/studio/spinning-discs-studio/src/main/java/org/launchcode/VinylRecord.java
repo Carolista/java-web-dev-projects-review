@@ -26,12 +26,14 @@ public class VinylRecord extends Media implements VariableRPM {
     }
 
     public void setDiameter(int diameter) {
+        String newline = System.lineSeparator();
         this.diameter = diameter;
         if (isValid()) {
             setSpinRate(calculateSpinRate());
             System.out.println("Spin rate updated for " + getName() + ".");
         } else {
-            System.out.println("Sorry, that is not a valid record diameter. Spin rate not updated for " + getName() + ".");
+            System.out.println("WARNING: Spin rate not updated for " + getName() + "." + newline +
+                    "Please enter a valid record diameter (7, 10, or 12).");
         }
     }
 
@@ -69,11 +71,11 @@ public class VinylRecord extends Media implements VariableRPM {
         for (int i=0; i < fileArray.length; i++) {
             totalSize += fileArray[i].getSize();
         }
-        if (totalSize <= 440) {
+        if (totalSize <= getCapacity()) {
             Collections.addAll(getFiles(), fileArray);
             System.out.println(newline + "Vinyl pressed with all tracks for " + getName() + " by " + artist + ".");
         } else {
-            System.out.println(newline + "WARNING: There is not enough room for all files to be pressed to vinyl on " + getName());
+            System.out.println(newline + "WARNING: There is not enough room for all files to be pressed to vinyl on " + getName() + ".");
         }
     }
 

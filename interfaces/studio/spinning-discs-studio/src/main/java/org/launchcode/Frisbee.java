@@ -25,7 +25,7 @@ public class Frisbee extends BaseDisc implements VariableRPM {
             System.out.println(newline + "Spin rate has been updated for " + getName() + ".");
         } else {
             System.out.println(newline + "WARNING: Spin rate was not updated for " + getName() + "." + newline +
-                    "Please set a valid discType (Ultimate Disc, Disc Golf, or Freestyle Disc).");
+                    "Please set a valid discType (Ultimate disc, Disc Golf disc, or Freestyle disc).");
         }
     }
 
@@ -50,7 +50,6 @@ public class Frisbee extends BaseDisc implements VariableRPM {
         float diameter = DIAMETERS.get(getDiscType());
         return Math.round(avgFrisbeeMPH * INCHES_PER_MILE / (diameter * PI * 60));
     }
-
 
     // Instance method
 
